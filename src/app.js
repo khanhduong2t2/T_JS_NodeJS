@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { default: helmet } = require('helmet');
 const compression = require('compression');
@@ -17,6 +18,11 @@ app.get('/', (req, res, next) => {
         metadata: strCompress.repeat(100000)
     });
 });
+
+// init db
+require('./dbs/init.mongodb');
+const { checkOverload } = require('./helpers/check.connect')
+checkOverload();
 
 // handing error
 
