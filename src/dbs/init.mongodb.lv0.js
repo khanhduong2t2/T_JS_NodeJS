@@ -1,8 +1,8 @@
 'use strict'
 
 const mongoose = require('mongoose');
-
-const connectString = `mongodb+srv://khanhduong2t2:n7F0fFMoFbEhKOSK@cluster0.t7i27ua.mongodb.net/?retryWrites=true&w=majority`;
+const { db: { host, name, port } } = require('../configs/config.mongodb')
+const connectString = `mongodb+srv://${host}:${port}/${name}`;
 
 mongoose.connect(connectString).then(_ => console.log(`Connect success`))
     .catch(err => console.log('Error Connect!'))
